@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Word Guess Game</title>
+
+    <script src="assets/javascript/game.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //declare variables that will be used throughout game
+
+      const wordsArray = ["Sabrina"];
+      var currentWord = [];
+      var wordSelected;
+      var playerGuess = "a";
+      var index_array = [];
+      var updatedWord;
+
+      //function that will create an array with the number of characters in word selected
+      function empty_word(word) {
+        for (let x = 0; x < word.length; x++) {
+          currentWord.push("_ ");
+          return currentWord;
+        }
+      }
+      //function that will replace a character in a string
+      function replaceAt(string, index, replace) {
+        console.log(
+          string.substring(0, index) + replace + string.substring(index + 1)
+        );
+      }
+      //outer loop that will select words from array
+      for (
+        let wordinArray = 0;
+        wordinArray < wordsArray.length;
+        wordinArray++
+      ) {
+        wordSelected = wordsArray[wordinArray];
+        empty_word(wordSelected);
+        // currentWord = currentWord.repeat(wordSelected.length);
+
+        for (let char = 0; char < wordSelected.length; char++) {
+          if (wordSelected[char] === playerGuess) {
+            index_array.push(char);
+            for (let x = 0; x < index_array.length; x++) {
+              currentWord[index_array[x]] = playerGuess;
+              console.log(currentWord);
+            }
+          }
+        }
+      }
+      // for (let char = 0; char < wordSelected.lenght; char++) {}
+      //test function
+    </script>
+  </body>
+</html>
