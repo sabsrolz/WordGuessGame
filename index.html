@@ -9,45 +9,57 @@
     <script src="assets/javascript/game.js"></script>
   </head>
   <body>
+    <div id="output"></div>
+    <!--div that will output letters selected by player-->
     <script type="text/javascript">
       //declare variables that will be used throughout game
 
-      const wordsArray = ["Sabrina"];
-      var currentWord = [];
-      var wordSelected;
-      var playerGuess = "a";
-      var index_array = [];
-      var updatedWord;
+      const wordsArray = ["Sabrina"]; //stores words that will come up in game
+      var currentWord = []; //word that will be displayed to player as they guess letters
+      var wordSelected; //word selected from array of words
+      var playerGuess = "a"; //character selected by player
+      var index_array = []; //stores indeces of guessed letter
 
-      //function that will create an array with the number of characters in word selected
+      //function that will create an "empty" array with the number of characters in word selected
       function empty_word(word) {
         for (let x = 0; x < word.length; x++) {
           currentWord.push("_ ");
-          return currentWord;
         }
+        return currentWord;
+        console.log(currentWord); //testing purposes
       }
       //function that will replace a character in a string
-      function replaceAt(string, index, replace) {
-        console.log(
-          string.substring(0, index) + replace + string.substring(index + 1)
-        );
-      }
-      //outer loop that will select words from array
+      // function replaceAt(string, index, replace) {
+      // console.log(
+      // string.substring(0, index) + replace + string.substring(index + 1)
+      //);
+      //}
+
+      //main outer loop in game that will iterate for every new word
       for (
         let wordinArray = 0;
         wordinArray < wordsArray.length;
         wordinArray++
       ) {
-        wordSelected = wordsArray[wordinArray];
-        empty_word(wordSelected);
+        wordSelected = wordsArray[wordinArray]; //stores word selected from array
+        empty_word(wordSelected); //calls function to create empty display
         // currentWord = currentWord.repeat(wordSelected.length);
 
         for (let char = 0; char < wordSelected.length; char++) {
+          //loop that checks if player's guess is in word selected
           if (wordSelected[char] === playerGuess) {
-            index_array.push(char);
+            index_array.push(char); //appends index to array of letter locations
             for (let x = 0; x < index_array.length; x++) {
+              //loops through index array and replaces blank with guessed letter
               currentWord[index_array[x]] = playerGuess;
+              var joined_word = currentWord.join(); //transforms array to string
               console.log(currentWord);
+              if (joined_word.includes("_ ")) {
+                //check if joined word still has empty spaces
+                alert("Guess another letter");
+              } else {
+                alert("You have guessed the correct word! " + joined_word);
+              }
             }
           }
         }
