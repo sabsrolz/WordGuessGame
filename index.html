@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Word Guess Game</title>
 
- <script src="assets/javascript/game.js"></script> 
+ <!--<script src="assets/javascript/game.js"></script> -->
   </head>
   <body>
     <h1 id="game_header">Word Search Game</h1>
@@ -17,9 +17,9 @@
       characters in the word, the letter will replace the empty space. You win
       once all letters in the word have been guessed!
     </p>
-
-
+    <button id = "startButton">Press to Start Game</button>
     <div id = "current_selection">
+      
     <p class="instructions">Please press a letter in your keyboard.</p>
     <div id = "current_letter">Letter Selected: a</div>
     </br></div>
@@ -30,6 +30,56 @@
       
       <!--div that will output letters selected by player-->
       <div id="guess_display">Box of guessed letters:</br> a b c d<br /></div>
-      
+      <script>
+      //initialize our variables
+var count = 0;
+const wordsArray = ["Sabrina", "Rolz", "Sandoval"]; //stores words that will come up in game
+var currentWord = [];
+//var updatedWord = []; //word that will be displayed to player as they guess letters
+var indexGuess; //integer picked by player
+var wordSelected; //word selected from array of words
+var playerGuess; //character selected by player
+var GuessedLetters = []; //array that will store letters already selected by player
+
+function empty_word(word) {
+  for (let x = 0; x < word.length; x++) {
+    currentWord = [];
+    currentWord.push("_ ");
+  }
+  return currentWord;
+}
+
+function startGame() {
+  // for (let wordinArray = 0; wordinArray < wordsArray.length; wordinArray++) {
+  wordSelected = wordsArray[count]; //stores word selected from array
+  currentWord = empty_word(wordSelected);
+
+  document.getElementById("word_progress").innerHTML = currentWord;
+  count++;
+}
+
+document.getElementById("startButton").addEventListener("click", startGame);
+
+//function that takes keyboard input from player and displays under letters guessed
+
+//main outer loop in game that will iterate for every new word
+
+//document.getElementById("word_progress").innerHTML = currentWord;
+document.addEventListener("keyup", playerGuesses);
+function playerGuesses(event) {
+  playerGuess = event.key;
+  document.getElementById("current_letter").innerHTML = playerGuess;
+
+  for (let char = 0; char < wordSelected.length; char++) {
+    if (wordSelected[char] === playerGuess) {
+      currentWord[char] = playerGuess;
+      //updatedWord.push(playerGuess);
+    } else {
+      currentWord[char] = "_ ";
+      //updatedWord.push("_ ");
+    }
+    document.getElementById("word_progress").innerHTML = currentWord;
+  }
+}</script>
   </body>
 </html>
