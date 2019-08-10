@@ -45,7 +45,7 @@ function startGame() {
   //console.log(randomIndex);
   wordSelected = wordsArray[randomIndex]; //stores word selected from array
   empty_word(wordSelected); //calls empty function and generated array with underscores
-  console.log(wordSelected);
+  console.log(wordSelected); //console logging word selected for testing
 
   document.getElementById("word_progress").innerHTML = currentWord; //display status of word being guessed to player
 }
@@ -94,8 +94,6 @@ function playerGuesses(event) {
     document.getElementById("missing").innerHTML = ""; //reset display of guesses left
     document.getElementById("score").innerHTML = score; //display current score
     currentWord = []; //reset array that stores word being guessed
-
-    //document.getElementById("word_progress").innerHTML = currentWord; //empty out word being guessed
     GuessedLetters = ""; //empty out box of guessed letters
     document.getElementById("guess_display").innerHTML = GuessedLetters;
     document.getElementById("current_letter").innerHTML = playerGuess; //empty out div that displays keys
