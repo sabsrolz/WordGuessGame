@@ -1,4 +1,4 @@
-var count = 0;
+//var count = 0;
 const wordsArray = [
   "banana",
   "birthdaycake",
@@ -30,6 +30,10 @@ var playerGuess; //character selected by player
 let GuessedLetters;
 var score = 0;
 var letter_counter = 0;
+let randomIndex = 0;
+let maxGuesses = 10;
+let wrongGuesses = 0;
+let binary = 0;
 
 function empty_word(word) {
   for (let x = 0; x < word.length; x++) {
@@ -37,16 +41,19 @@ function empty_word(word) {
   }
   return currentWord;
 }
+
 //while (count < wordsArray.length) {
 document.getElementById("startButton").addEventListener("click", startGame);
 function startGame() {
   // for (let wordinArray = 0; wordinArray < wordsArray.length; wordinArray++) {
-  wordSelected = wordsArray[count]; //stores word selected from array
+  randomIndex = Math.floor(Math.random() * (wordsArray.length + 1));
+  console.log(randomIndex);
+  wordSelected = wordsArray[randomIndex]; //stores word selected from array
   empty_word(wordSelected);
-  console.log(currentWord);
+  console.log(wordSelected);
 
   document.getElementById("word_progress").innerHTML = currentWord;
-  count++;
+  //count++;
 }
 
 //function that takes keyboard input from player and displays under letters guessed
@@ -65,26 +72,52 @@ function playerGuesses(event) {
   for (let char = 0; char < wordSelected.length; char++) {
     if (wordSelected[char] === playerGuess) {
       currentWord[char] = playerGuess;
-      letter_counter++;
+      //letter_counter++;
+      binary = 1;
+      console.log(binary);
     }
+
+    // if (currentWord.includes(playerGuess)) {
+    //   binary = 1;
+    //   console.log(playerGuess);
+    // } else {
+    //   binary = 0;
+    // }
 
     //console.log(currentWord);
     document.getElementById("word_progress").innerHTML = currentWord;
   }
 
-  if (currentWord.includes("_ ")) {
-    console.log("keep playing");
-    let diff = currentWord.length - letter_counter;
-    document.getElementById("missing").innerHTML = diff;
+  if (binary === 0) {
+    maxGuesses--;
+    console.log(maxGuesses);
+  }
+
+  if (currentWord.includes("_ ") && maxGuesses !== 0) {
+    //console.log("keep playing");
+    document.getElementById("missing").innerHTML = maxGuesses;
+
+    //if (wrongGuesses === 9) {
+    //wrongGuesses = 0;
+    //}
   } else {
-    score++;
-    letter_counter = 0;
+    //letter_counter = 0;
+    maxGuesses = 10;
+    playerGuess = "";
     document.getElementById("missing").innerHTML = "";
     document.getElementById("score").innerHTML = score;
     currentWord = [];
-    console.log(currentWord);
+    alert("Press the start button to select a different word");
+    //console.log(currentWord);
     document.getElementById("word_progress").innerHTML = currentWord;
     GuessedLetters = "";
     document.getElementById("guess_display").innerHTML = GuessedLetters;
+    document.getElementById("current_letter").innerHTML = playerGuess;
+
+    if (maxGuesses === 0) {
+      score = score;
+    } else {
+      score++;
+    }
   }
 }
