@@ -5,116 +5,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Word Guess Game</title>
-
- <!--<script src="assets/javascript/game.js"></script> -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="assets/javascript/game.js"></script>
   </head>
-  <body>
-    <h1 id="game_header">Word Search Game</h1>
+  <body background="assets/images/game_background.png">
+    <header>
+      <div class="row">
+        <div class="col-md-6">
+          <h1
+            id="game_header"
+            class="text-light text-center"
+            style="background-color:#4aaaa5;"
+          >
+            Word Search Game
+          </h1>
+        </div>
+        <div class="col-md-2">
+          <img
+            class="img-thumbnail"
+            src="assets/images/glass_cartoon.jpg"
+            width="100px"
+            height="100px"
+          />
+        </div>
+      </div>
+    </header>
 
-    <p class="instructions">
-      Welcome to the Word Search Game! We will pick a word and you have to input
-      a letter that you think is in the word. If the letter matches one of the
-      characters in the word, the letter will replace the empty space. You win
-      once all letters in the word have been guessed!
-    </p>
-    <button id = "startButton">Press to Start Game</button>
-    
-      
-    <p class="instructions">Please press a letter in your keyboard.</p>
-    <div id = "current_letter"></div>
-    </br></div>
-    <div id="word_section">The status of the word you are guessing</br></div>
-    <div id = "word_progress"></br></div>
-    <div id = "missing_guesses">: missing guesses:</br></div>
-    <div id = "missing"></div>
-      
-    
-      
-      <!--div that will output letters selected by player-->
-      <div id="guess_display">Box of guessed letters:<br></div>
+    <div class="row">
+      <div class="col-md-10">
+        <p
+          id="instructions"
+          class="text-center"
+          style="background-color:#4aaaa5;"
+        >
+          Welcome to the Word Search Game! We will pick a word and you have to
+          input a letter that you think is in the word. If the letter matches
+          one of the characters in the word, the letter will replace the empty
+          space. You win once all letters in the word have been guessed!
+        </p>
+      </div>
+    </div>
 
-      <div id= "score_title">Score:</br></div>
-      <div id = "score"></div>
-      
-      <script>
+    <button id="startButton" type="button" class="btn btn-light">
+      Press to Start Game
+    </button>
 
-      //initialize our variables
-      var count = 0;
-      const wordsArray = ["sabrina", "rolz", "sandoval"]; //stores words that will come up in game
-      var currentWord = [];
-    //var updatedWord = [];
-    //var indexGuess; //integer picked by player
-    var wordSelected; //word selected from array of words
-    var playerGuess; //character selected by player
-    let GuessedLetters;
-    var score = 0;
-    var letter_counter = 0;
+    <div class="row">
+      <div class="col-md-3">
+        <p class="text-left" style="background-color:#4aaaa5;">
+          Please press a letter in your keyboard.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div
+          id="current_letter"
+          class="font-weight-bold text-center"
+          style="background-color:pink;"
+        >
+          KEY
+        </div>
+      </div>
+    </div>
 
-function empty_word(word) {
-  for (let x = 0; x < word.length; x++) {
-    currentWord.push("_ ");
-  }
-  return currentWord;
-}
-//while (count < wordsArray.length) {
-document.getElementById("startButton").addEventListener("click", startGame);
-function startGame() {
-  // for (let wordinArray = 0; wordinArray < wordsArray.length; wordinArray++) {
-  wordSelected = wordsArray[count]; //stores word selected from array
-  empty_word(wordSelected);
-  console.log(currentWord);
+    <div class="row">
+      <div class="col-md-3">
+        <p
+          id="word_section"
+          class="text-left"
+          style="background-color:#4aaaa5;"
+        >
+          Status of word in progress:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div
+          id="word_progress"
+          class="font-weight-bold text-center"
+          style="background-color:pink;"
+        >
+          _ _ _ _
+        </div>
+      </div>
+    </div>
 
-  document.getElementById("word_progress").innerHTML = currentWord; 
-  count++;
-}
+    <div class="row">
+      <div class="col-md-3">
+        <p
+          id="missing_guesses"
+          class="text-left"
+          style="background-color:#4aaaa5;"
+        >
+          Guesses Left:
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div
+          id="missing"
+          class="font-weight-bold text-center"
+          style="background-color:pink;"
+        >
+          int
+        </div>
+      </div>
+    </div>
 
+    <!--div that will output letters selected by player-->
+    <div class="row">
+      <div class="col-md-3">
+        <div id="guess" class="text-left" style="background-color:#4aaaa5;">
+          Box of guessed letters:
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div
+          id="guess_display"
+          class="font-weight-bold text-center"
+          style="background-color:pink;"
+        >
+          a b c
+        </div>
+      </div>
+    </div>
 
-
-//function that takes keyboard input from player and displays under letters guessed
-
-//document.getElementById("word_progress").innerHTML = currentWord;
-
-document.addEventListener("keyup", playerGuesses);
-
-function playerGuesses(event) {
-  playerGuess = event.key;
-  GuessedLetters = document.createElement("span");
-  GuessedLetters.innerHTML = playerGuess;
-  document.getElementById("current_letter").innerHTML = playerGuess;
-  document.getElementById("guess_display").appendChild(GuessedLetters);
-
-  for (let char = 0; char < wordSelected.length; char++) {
-    if (wordSelected[char] === playerGuess) {
-      currentWord[char] = playerGuess;
-      letter_counter ++;
-    } 
-
-    
-    //console.log(currentWord);
-    document.getElementById("word_progress").innerHTML = currentWord;
-
-  
-  }
-
-  if (currentWord.includes("_ ")) {
-    console.log("keep playing");
-    let diff = currentWord.length- letter_counter;
-    document.getElementById("missing").innerHTML = diff;
-
-  }
-  else {
-    score ++;
-    letter_counter = 0;
-    document.getElementById("score").innerHTML = score;
-    currentWord = [];
-    console.log(currentWord);
-    document.getElementById("word_progress").innerHTML = currentWord;
-    GuessedLetters= "";
-    document.getElementById("guess_display").innerHTML= GuessedLetters;
-    
-    
-  };
-}
-//}</script>
+    <div class="row">
+      <div class="col-md-3">
+        <div
+          id="score_title"
+          class="text-center"
+          style="background-color:#4aaaa5;"
+        >
+          SCORE:
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div
+          id="score"
+          class="font-weight-bold text-center"
+          style="background-color:pink;"
+        >
+          current score
+        </div>
+      </div>
+    </div>
   </body>
 </html>

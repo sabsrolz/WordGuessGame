@@ -1,53 +1,90 @@
-//initialize our variables
 var count = 0;
-const wordsArray = ["Sabrina", "Rolz", "Sandoval"]; //stores words that will come up in game
-//var currentWord = [];
-//var updatedWord = []; //word that will be displayed to player as they guess letters
-var indexGuess; //integer picked by player
+const wordsArray = [
+  "banana",
+  "birthdaycake",
+  "blackberry",
+  "bubblegum",
+  "pecan",
+  "caramel",
+  "chocolate",
+  "doublechocolate",
+  "cookiedough",
+  "chocolatechip",
+  "peanutbutter",
+  "mint",
+  "chocolatetruffle",
+  "coffee",
+  "dulcedeleche",
+  "cottoncandy",
+  "frenchvanilla",
+  "greentea",
+  "hazelnut",
+  "almondfudge",
+  "lavender"
+]; //stores words that will come up in game
+var currentWord = [];
+//var updatedWord = [];
+//var indexGuess; //integer picked by player
 var wordSelected; //word selected from array of words
 var playerGuess; //character selected by player
-var GuessedLetters = []; //array that will store letters already selected by player
+let GuessedLetters;
+var score = 0;
+var letter_counter = 0;
 
 function empty_word(word) {
   for (let x = 0; x < word.length; x++) {
-    let currentWord = [];
     currentWord.push("_ ");
   }
   return currentWord;
 }
-
+//while (count < wordsArray.length) {
+document.getElementById("startButton").addEventListener("click", startGame);
 function startGame() {
   // for (let wordinArray = 0; wordinArray < wordsArray.length; wordinArray++) {
   wordSelected = wordsArray[count]; //stores word selected from array
-  currentWord = empty_word(wordSelected);
+  empty_word(wordSelected);
+  console.log(currentWord);
 
   document.getElementById("word_progress").innerHTML = currentWord;
   count++;
 }
 
-document.getElementById("startButton").addEventListener("click", startGame);
-
 //function that takes keyboard input from player and displays under letters guessed
 
-//main outer loop in game that will iterate for every new word
-if (currentWord.includes("_ ")) {
-  //document.getElementById("word_progress").innerHTML = currentWord;
-  document.addEventListener("keyup", playerGuesses);
-  function playerGuesses(event) {
-    playerGuess = event.key;
-    document.getElementById("current_letter").innerHTML = playerGuess;
+//document.getElementById("word_progress").innerHTML = currentWord;
 
-    for (let char = 0; char < wordSelected.length; char++) {
-      if (wordSelected[char] === playerGuess) {
-        currentWord[char] = playerGuess;
-        //updatedWord.push(playerGuess);
-      } else {
-        currentWord[char] = "_ ";
-        //updatedWord.push("_ ");
-      }
-      document.getElementById("word_progress").innerHTML = currentWord;
+document.addEventListener("keyup", playerGuesses);
+
+function playerGuesses(event) {
+  playerGuess = event.key;
+  GuessedLetters = document.createElement("span");
+  GuessedLetters.innerHTML = playerGuess;
+  document.getElementById("current_letter").innerHTML = playerGuess;
+  document.getElementById("guess_display").appendChild(GuessedLetters);
+
+  for (let char = 0; char < wordSelected.length; char++) {
+    if (wordSelected[char] === playerGuess) {
+      currentWord[char] = playerGuess;
+      letter_counter++;
     }
+
+    //console.log(currentWord);
+    document.getElementById("word_progress").innerHTML = currentWord;
   }
-} else {
-  console.log("end");
+
+  if (currentWord.includes("_ ")) {
+    console.log("keep playing");
+    let diff = currentWord.length - letter_counter;
+    document.getElementById("missing").innerHTML = diff;
+  } else {
+    score++;
+    letter_counter = 0;
+    document.getElementById("missing").innerHTML = "";
+    document.getElementById("score").innerHTML = score;
+    currentWord = [];
+    console.log(currentWord);
+    document.getElementById("word_progress").innerHTML = currentWord;
+    GuessedLetters = "";
+    document.getElementById("guess_display").innerHTML = GuessedLetters;
+  }
 }
