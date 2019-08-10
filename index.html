@@ -58,24 +58,23 @@
       Press to Start Game
     </button>
 
-    <div class="row">
+    <div class="row m-3">
       <div class="col-md-3">
-        <p class="m-3 text-center" style="background-color:#86e4eb;">
+        <p class="text-center" style="background-color:#86e4eb;">
           Please press a letter in your keyboard.
         </p>
       </div>
-    </div>
-    <div class="ml-4 row">
       <div class="col-md-2">
-        <div
-          id="current_letter"
-          class="font-weight-bold text-center"
-          style="background-color:rgb(169, 238, 137);"
-        >
-          KEY
+          <div
+            id="current_letter"
+            class="font-weight-bold text-center"
+            style="background-color:rgb(169, 238, 137);"
+          >
+            KEY
+          </div>
         </div>
-      </div>
     </div>
+  
 
     <div class="row">
       <div class="col-md-3">
@@ -102,6 +101,7 @@
     </div>
 
     <div class="m-3 row">
+            
       <div class="col-md-2">
         <p
           id="missing_guesses"
@@ -111,6 +111,16 @@
           Guesses Left:
         </p>
       </div>
+      <div class="col-md-3">
+          <p
+            id="missing_guesses"
+            class="text-center"
+            style="background-color:#86e4eb;"
+          >
+            If you run out of guesses, press start button for a different word.
+          </p>
+        </div>
+      
     </div>
     <div class="m-3 row">
       <div class="col-md-2">
@@ -122,6 +132,24 @@
           guesses left
         </div>
       </div>
+      <div class="col-md-3">
+          <div
+            id="score_title"
+            class="text-center"
+            style="background-color:#86e4eb;"
+          >
+            SCORE:
+          </div>
+        </div>
+      <div class="col-md-3">
+          <div
+            id="score"
+            class="font-weight-bold text-center"
+            style="background-color:rgb(169, 238, 137);"
+          >
+            current score
+          </div>
+        </div>
     </div>
 
     <!--div that will output letters selected by player-->
@@ -132,7 +160,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="ml-3 row">
       <div class="col-md-3">
         <div
           id="guess_display"
@@ -142,27 +170,9 @@
       </div>
     </div>
 
+    
     <div class="m-3 row">
-      <div class="col-md-3">
-        <div
-          id="score_title"
-          class="text-center"
-          style="background-color:#86e4eb;"
-        >
-          SCORE:
-        </div>
-      </div>
-    </div>
-    <div class="m-3 row">
-      <div class="col-md-3">
-        <div
-          id="score"
-          class="font-weight-bold text-center"
-          style="background-color:rgb(169, 238, 137);"
-        >
-          current score
-        </div>
-      </div>
+      
     </div>
     <script src="assets/javascript/game.js"></script>
   </body>

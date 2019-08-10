@@ -104,5 +104,6 @@ function playerGuesses(event) {
     } else {
       score++;
     }
+    document.getElementById("score").innerHTML = score; //display updated score
   }
 }
