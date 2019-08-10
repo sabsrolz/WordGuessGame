@@ -11,36 +11,39 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
   </head>
-  <body>
-    <!--background="assets/images/game_background.png">-->
+  <body background="assets/images/icecream_background.jpg"></body>
+    <!---->
     <header>
-      <div class="row">
-        <div class="col-md-6">
+      <div class="p-3 row">
+        <div class="col-md-5">
           <h1
             id="game_header"
-            class="text-light text-center"
-            style="background-color:#4aaaa5;"
+            class="text-dark text-center"
+            style="background-color:#86e4eb;"
           >
             Word Search Game
           </h1>
         </div>
-        <div class="col-md-2">
-          <img
-            class="img-thumbnail"
-            src="assets/images/glass_cartoon.jpg"
-            width="100px"
-            height="100px"
-          />
-        </div>
       </div>
+      <div class="p-3 row">
+          <div class="col-md-5">
+            <h2
+              id="game_header"
+              class="text-light text-center"
+              style="background-color:#86e4eb;"
+            >
+              ~Ice Cream Edition~
+            </h2>
+          </div>
+        </div>
     </header>
 
-    <div class="row">
+    <div class="m-4 row">
       <div class="col-md-10">
         <p
           id="instructions"
           class="text-center"
-          style="background-color:#4aaaa5;"
+          style="background-color:#86e4eb;"
         >
           Welcome to the Word Search Game! We will pick a word and you have to
           input a letter that you think is in the word. If the letter matches
@@ -51,23 +54,23 @@
       </div>
     </div>
 
-    <button id="startButton" type="button" class="btn btn-danger">
+    <button id="startButton" type="button" class="ml-5 btn btn-danger">
       Press to Start Game
     </button>
 
     <div class="row">
       <div class="col-md-3">
-        <p class="text-left" style="background-color:#4aaaa5;">
+        <p class="m-3 text-center" style="background-color:#86e4eb;">
           Please press a letter in your keyboard.
         </p>
       </div>
     </div>
-    <div class="row">
+    <div class="ml-4 row">
       <div class="col-md-2">
         <div
           id="current_letter"
           class="font-weight-bold text-center"
-          style="background-color:pink;"
+          style="background-color:rgb(169, 238, 137);"
         >
           KEY
         </div>
@@ -78,42 +81,43 @@
       <div class="col-md-3">
         <p
           id="word_section"
-          class="text-left"
-          style="background-color:#4aaaa5;"
+          class="m-3 text-center"
+          style="background-color:#86e4eb;;"
         >
           Status of word in progress:
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-5">
         <div
           id="word_progress"
-          class="font-weight-bold text-center"
-          style="background-color:pink;"
+          class="ml-3 font-weight-bold text-center"
+          style="background-color:rgb(169, 238, 137);"
         >
           _ _ _ _
         </div>
       </div>
+      <div class="col-md-4 text-center" style="background-color:#86e4eb;">Press the start button to guess another word</div>
     </div>
 
-    <div class="row">
-      <div class="col-md-3">
+    <div class="m-3 row">
+      <div class="col-md-2">
         <p
           id="missing_guesses"
-          class="text-left"
-          style="background-color:#4aaaa5;"
+          class="text-center"
+          style="background-color:#86e4eb;"
         >
           Guesses Left:
         </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3">
+    <div class="m-3 row">
+      <div class="col-md-2">
         <div
           id="missing"
           class="font-weight-bold text-center"
-          style="background-color:pink;"
+          style="background-color:rgb(169, 238, 137);"
         >
           guesses left
         </div>
@@ -121,9 +125,9 @@
     </div>
 
     <!--div that will output letters selected by player-->
-    <div class="row">
+    <div class="ml-3 row">
       <div class="col-md-3">
-        <div id="guess" class="text-left" style="background-color:#4aaaa5;">
+        <div id="guess" class="text-center" style="background-color:#86e4eb;">
           Box of guessed letters:
         </div>
       </div>
@@ -133,28 +137,28 @@
         <div
           id="guess_display"
           class="font-weight-bold text-center"
-          style="background-color:pink;"
+          style="background-color:rgb(169, 238, 137);"
         ></div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="m-3 row">
       <div class="col-md-3">
         <div
           id="score_title"
           class="text-center"
-          style="background-color:#4aaaa5;"
+          style="background-color:#86e4eb;"
         >
           SCORE:
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="m-3 row">
       <div class="col-md-3">
         <div
           id="score"
           class="font-weight-bold text-center"
-          style="background-color:pink;"
+          style="background-color:rgb(169, 238, 137);"
         >
           current score
         </div>

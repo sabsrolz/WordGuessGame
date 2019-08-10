@@ -30,7 +30,7 @@ var score = 0; //integer variable that keeps track of score
 let randomIndex = 0; //random index to pick word from array
 let maxGuesses = 10; //maximum number of guesses player has
 let binary = 0; // varible that stores whether player guessed a correct letter (1) or not (0)
-
+//console logs are included for testing
 //function that inputs word and generates array of underscores based on length of word
 function empty_word(word) {
   for (let x = 0; x < word.length; x++) {
@@ -45,7 +45,7 @@ function startGame() {
   //console.log(randomIndex);
   wordSelected = wordsArray[randomIndex]; //stores word selected from array
   empty_word(wordSelected); //calls empty function and generated array with underscores
-  //console.log(wordSelected);
+  console.log(wordSelected);
 
   document.getElementById("word_progress").innerHTML = currentWord; //display status of word being guessed to player
 }
@@ -87,16 +87,19 @@ function playerGuesses(event) {
     document.getElementById("missing").innerHTML = maxGuesses; //display how many guesses player has left
   } else {
     //a new word will be selected from array
+    document.getElementById("word_progress").innerHTML = currentWord;
+
     maxGuesses = 10; //reset number of guesses left
     playerGuess = "";
     document.getElementById("missing").innerHTML = ""; //reset display of guesses left
     document.getElementById("score").innerHTML = score; //display current score
     currentWord = []; //reset array that stores word being guessed
-    alert("Press the start button to select a different word"); //ask player to reset game
-    document.getElementById("word_progress").innerHTML = currentWord; //empty out word being guessed
+
+    //document.getElementById("word_progress").innerHTML = currentWord; //empty out word being guessed
     GuessedLetters = ""; //empty out box of guessed letters
     document.getElementById("guess_display").innerHTML = GuessedLetters;
     document.getElementById("current_letter").innerHTML = playerGuess; //empty out div that displays keys
+    //alert("Press the start button to select a different word"); //ask player to reset game
     //update score accordingly: 1. if player guessed correct word score increases 2. if player runs out of guesses, score remains the same
     if (maxGuesses === 0) {
       score = score;
