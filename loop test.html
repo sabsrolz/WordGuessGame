@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <h1>Header1</h1>
+
+    <div>Pick a letter:</br></div>
+    <div id = "letter_picked"></br><div>
+
+    <div id = "word_status">_ _ _</div>
+   
+    <script>
+      const array = ["Sabrina"];
+      var wordSelected;
+      const currentWord = [];
+      var playerGuess;
+      var index_array = [];
+      var updatedWord = [];
+
+      function gameStatus(current_word) {
+        for (let i = 0; i < current_word.length; i++) {
+            if (current_word[i] === playerGuess) {
+                updatedWord[i] = playerGuess;
+            } else {
+                updatedWord[i] = "_ ";
+            }
+            return (updatedWord);
+        }
+      }
+
+
+
+
+      function empty_word(word) {
+        for (let y = 0; y < word.length; y++) {
+        currentWord.push("_ ");
+        }
+        return currentWord;
+       
+            }
+
+        
+        //document.addEventListener("keyup", playerGuesses);
+        
+
+   
+    
+        
+        
+        for (let x = 0; x < array.length; x++) {
+        wordSelected = array[x];
+        empty_word(wordSelected); //returns empty current word
+        //console.log(currentWord);
+        
+        //updatedWord = currentWord;   
+        //display initial empty word to user
+
+       if (updatedWord.includes("_ ")) {
+
+        document.addEventListener("keyup", playerGuesses);
+        function playerGuesses(event) {
+        playerGuess = event.key;
+        document.getElementById("letter_picked").innerHTML = playerGuess;
+
+        gameStatus(wordSelected);
+
+        
+    }
+
+        } else {
+            alert("You have guessed the correct word: "+ updatedWord);
+        }
+    }
+    
+
+
+
+
+        
+        
+  
+        
+      
+    </script>
+  </body>
+</html>
