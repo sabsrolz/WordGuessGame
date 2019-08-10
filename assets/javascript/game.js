@@ -22,11 +22,11 @@ const wordsArray = [
   "almondfudge",
   "lavender"
 ];
-var currentWord = []; //stores status of current word being guessed by player
-var wordSelected; //word selected from array of words at random
-var playerGuess; //character selected by player
+let currentWord = []; //stores status of current word being guessed by player
+let wordSelected; //word selected from array of words at random
+let playerGuess; //character selected by player
 let GuessedLetters; // variable that stores letters that have been guessed by player
-var score = 0; //integer variable that keeps track of score
+let score = 0; //integer variable that keeps track of score
 let randomIndex = 0; //random index to pick word from array
 let maxGuesses = 10; //maximum number of guesses player has
 let binary = 0; // varible that stores whether player guessed a correct letter (1) or not (0)
