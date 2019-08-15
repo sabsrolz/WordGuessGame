@@ -33,19 +33,26 @@ let binary = 0; // varible that stores whether player guessed a correct letter (
 //console logs are included for testing
 //function that inputs word and generates array of underscores based on length of word
 function empty_word(word) {
+  currentWord = [];
+  maxGuesses = 10;
+  document.getElementById("missing").innerHTML = maxGuesses;
   for (let x = 0; x < word.length; x++) {
     currentWord.push("_ ");
   }
   return currentWord;
 }
 //Game starts when player presses the start button
+
 document.getElementById("startButton").addEventListener("click", startGame);
 function startGame() {
+  //currentWord.length = 0;
+  //document.getElementById("word_progress").innerHTML = "";
+
   randomIndex = Math.floor(Math.random() * (wordsArray.length + 1)); //generate random index
   //console.log(randomIndex);
   wordSelected = wordsArray[randomIndex]; //stores word selected from array
   empty_word(wordSelected); //calls empty function and generated array with underscores
-  console.log(wordSelected); //console logging word selected for testing
+  console.log(currentWord); //console logging word selected for testing
 
   document.getElementById("word_progress").innerHTML = currentWord; //display status of word being guessed to player
 }
